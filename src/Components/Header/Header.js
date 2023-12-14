@@ -60,10 +60,6 @@ const Header = () => {
     <>
       <div className="flex">
         <div className="Back-Image">
-          <div>
-            {/* <img src={require("../../Assets/blob.svg")} alt="" /> */}
-          </div>
-
           <div className="flex ms-16 justify-center mt-10">
             <div class="w-full max-w-md p-6 mb-5 bg-white border border-gray-200 rounded-lg shadow dark:white dark:white">
               <form className="mb-5">
@@ -116,10 +112,7 @@ const Header = () => {
                   trigger={
                     <button>
                       {" "}
-                      <span
-                        // onClick={() => setOpenOptions(!openOptions)}
-                        className="headerSearchText"
-                      >{`${options.adult} Adult,  ${options.children} Children &  ${options.room} room`}</span>
+                      <span className="headerSearchText">{`${options.adult} Adult,  ${options.children} Children &  ${options.room} room`}</span>
                     </button>
                   }
                   position="bottom center"
@@ -209,11 +202,15 @@ const Header = () => {
               <div></div>
             </div>
           </div>
-
         </div>
         <div className="me-2 second-backImg">
-        <img src={require("../../Assets/excited-happy-young.png")} width="300" height="80px" alt="" />
-        <hr class="w-48 h-1 mx-auto bg-gray-100 border-0 rounded md:my-0 dark:bg-gray-100"></hr>
+          <img
+            src={require("../../Assets/excited-happy-young.png")}
+            width="300"
+            height="80px"
+            alt=""
+          />
+          <hr class="w-48 h-1 mx-auto bg-gray-100 border-0 rounded md:my-0 dark:bg-gray-100"></hr>
         </div>
       </div>
     </>
