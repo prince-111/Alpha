@@ -1,0 +1,46 @@
+{
+  "Destinations": [
+    {
+      "id": "1",
+      "name": "New Delhi",
+      "images": "https://images.unsplash.com/photo-1587474260584-136574528ed5?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVsaGl8ZW58MHx8MHx8fDA%3D",
+      "tags": ["Capital"]
+    },
+    {
+      "id": "2",
+      "name": "Bangalore",
+      "images":"https://t3.ftcdn.net/jpg/01/60/70/96/360_F_160709617_sRZ4QJ3GQZo1azOis6gWKoZPa2j2lv8T.jpg",
+      "tags": []
+    },
+    {
+      "id": "3",
+      "name": "Mumbai",
+      "images": "https://t4.ftcdn.net/jpg/01/94/30/85/360_F_194308508_HZXb24lEi6yaMy3MilayyEksYwOSCQEK.jpg",
+      "tags": ["Party Destinations"]
+    },
+    {
+      "id": "4",
+      "name": "Maldives",
+      "images": "https://cdn1.goibibo.com/voy_ing/t_g/New_dWeb_Homepage_Maldives-1581454743.jpg",
+      "tags": []
+    },
+    {
+      "id": "5",
+      "name": "OoTY",
+      "images": "https://cdn1.goibibo.com/voy_ing/t_g/New_dWeb_Homepage_Ooty-1581430518.jpg",
+      "tags": ["Weekend Getaways", "Mountains Calling"]
+    },
+    {
+      "id": "6",
+      "name": "Tripati",
+      "images": "https://cdn1.goibibo.com/voy_ing/t_g/New_dWeb_Homepage_Tirupati-1581429922.jpg",
+      "tags": ["Indian Pilgrimages"]
+    },
+    {
+      "id": "7",
+      "name": "Varanasi",
+      "images": "https://cdn1.goibibo.com/voy_ing/t_g/New_dWeb_Homepage_Varanasi-1581429838.jpg",
+      "tags": ["Indian Pilgrimages"]
+    }
+  ]
+}

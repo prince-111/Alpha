@@ -1,0 +1,24 @@
+{
+    "Property":[
+        {
+            "id":"1",
+            "name":"Hotels",
+            "images":"https://media.istockphoto.com/id/104731717/photo/luxury-resort.jpg?s=612x612&w=0&k=20&c=cODMSPbYyrn1FHake1xYz9M8r15iOfGz9Aosy9Db7mI="
+        },
+        {
+            "id":"2",
+            "name":"Apartments",
+            "images":"https://img.freepik.com/premium-photo/high-buildings-with-cloudy-blue-sky_341545-529.jpg"
+        },
+        {
+            "id":"3",
+            "name":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Town_and_Country_fh000023.jpg/800px-Town_and_Country_fh000023.jpg",
+            "images":"Resorts"
+        },
+        {
+            "id":"4",
+            "name":"Villas",
+            "images":"https://img.vistarooms.com/gallery/vista-sadh-villa-c227d4.jpg"
+        }
+    ]
+}
