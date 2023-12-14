@@ -1,0 +1,71 @@
+.headerSearchItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 30%;
+}
+
+.Back-Image{
+  object-fit: cover;
+  height: 500px;
+  width: 900px;
+  background-image: url("../../Assets/blob.svg");
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+.second-backImg{
+  /* background-image: url("../../Assets/excited-happy-young.png"); */
+  /* position: relative;
+  background-repeat:no-repeat; */
+  filter: drop-shadow(5px 5px 10px #555);
+}
+
+
+.headerSearchText {
+    color:lightslategrey;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.options {
+    z-index: 0;
+    position: absolute;
+    top: 1px;
+    /* bottom: 9px; */
+    background-color: white;
+    color: gray;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+.optionItem {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+
+.optionCounter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .optionCounterButton {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #0071c2;
+    color: #0071c2;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+  .optionCounterButton:disabled {
+    cursor: not-allowed;
+  }
+  
