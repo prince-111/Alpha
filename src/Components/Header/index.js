@@ -119,8 +119,12 @@ const Header = () => {
                 )}
               </div>
             </div>
+            
+            <div class="mt-4"> 
+            <hr class="h-px bg-gray-200 border-0 dark:bg-gray-300"/>
+            </div>
 
-            <div className="mt-4 ms-8">
+            <div className="mt-1 ms-8">
               <Popup
                 on={["hover", "focus"]}
                 trigger={
@@ -233,7 +237,7 @@ const Header = () => {
                 class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  Noteworthy technology acquisitions 2021
+                  Noteworthy technology acquisitions 2023
                 </h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">
                   Here are the biggest enterprise technology acquisitions of
@@ -249,7 +253,7 @@ const Header = () => {
                   class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                 >
                   <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Noteworthy technology acquisitions 2021
+                    Noteworthy technology acquisitions 2023
                   </h5>
                 </a>
               </div>
