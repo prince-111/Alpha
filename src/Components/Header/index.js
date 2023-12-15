@@ -6,6 +6,7 @@ import "reactjs-popup/dist/index.css";
 import "./index.css";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const handleOption = (name, operation) => {
@@ -45,6 +46,11 @@ const Header = () => {
     selectionRange.startDate
   );
 
+  const navigate = useNavigate();
+  const handleSearch = ()=>{
+     navigate("/hotels")
+  }
+
   return (
     <>
       <div className="Header_Color">
@@ -70,6 +76,7 @@ const Header = () => {
                   type="search"
                   placeholder="Search Room, Hotels, Area & landmarks"
                   class="outline-none border-b-2 w-full border-gray-200 py-3 px-7"
+                  required
                 />
               </div>
             </form>
@@ -224,6 +231,7 @@ const Header = () => {
               <button
                 type="button"
                 class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-full text-sm px-16 py-5 text-center me-2 mb-2"
+                onClick={handleSearch}
               >
                 Search
               </button>
@@ -234,9 +242,9 @@ const Header = () => {
             <div className="">
               <a
                 href="#"
-                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:white dark:white"
               >
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
                   Noteworthy technology acquisitions 2023
                 </h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">

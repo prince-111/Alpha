@@ -16,8 +16,12 @@
     "react-date-range": "^1.4.0",
     "react-datepicker": "^4.24.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
     "react-popup": "^0.11.2",
     "react-router-dom": "^6.20.1",
+=======
+    "react-router-dom": "^6.21.0",
+>>>>>>> cbf15fdb1bb0ddc16111f4b5e250032d040fa7d7
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "reactjs-popup": "^2.0.6",

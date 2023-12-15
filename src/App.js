@@ -1,14 +1,18 @@
+import { BrowserRouter,Routes, Route, } from "react-router-dom";
 import "./App.css";
-import Header from "./Components/Header";
-import Navbar from "./Components/Navbar";
-import SliderImages from "./Components/SliderImages";
+import Home from "./Pages/home";
+import Hotels from "./Components/Hotels";
 
 function App() {
   return (
     <>
-   <Navbar/>
-   <Header/>
-   <SliderImages/>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/hotels" element={<Hotels/>}/>
+    </Routes>
+    </BrowserRouter>
+
     </>
   );
 }
