@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { DatePicker } from "antd";
-import "./header.css";
 import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
+import 'reactjs-popup/dist/index.css'
+import "./index.css";
+
 
 const Header = () => {
   const style = {
@@ -106,8 +107,11 @@ const Header = () => {
                 <DatePicker.RangePicker cellRender={cellRender} size="large" />
               </div>
 
+
+
               <div className="mt-4 ms-8">
                 <Popup
+                 
                   on={["hover", "focus"]}
                   trigger={
                     <button>
@@ -115,13 +119,18 @@ const Header = () => {
                       <span className="headerSearchText">{`${options.adult} Adult,  ${options.children} Children &  ${options.room} room`}</span>
                     </button>
                   }
+                  contentStyle={{
+                    width: "350px", 
+                   
+                  }}
+                 
                   position="bottom center"
                 >
-                  <div className="">
+                  <div className="flex flex-row justify-center content-center">
                     {/* Adult Count */}
-                    <div className="block">
+                    <div className="block mr-2">
                       <div className="ms-3 me-5">Adult</div>
-                      <div>
+                      <div className="flex flex-row justify-center content-center">
                         <button
                           type="button"
                           disabled={options.adult <= 1}
@@ -145,9 +154,9 @@ const Header = () => {
                     </div>
 
                     {/* Children Count */}
-                    <div className="block">
+                    <div className="block mr-2">
                       <div className="ms-3 me-5">Children</div>
-                      <div>
+                      <div className="flex flex-row justify-center content-center">
                         <button
                           type="button"
                           disabled={options.children <= 0}
@@ -173,7 +182,7 @@ const Header = () => {
                     {/* Room Count */}
                     <div className="block">
                       <div className="ms-3 me-5">Room</div>
-                      <div>
+                      <div className="flex flex-row justify-center content-center">
                         <button
                           type="button"
                           disabled={options.room <= 1}
@@ -198,14 +207,14 @@ const Header = () => {
                   </div>
                 </Popup>
               </div>
+            
 
-              <div></div>
             </div>
           </div>
         </div>
         <div className="me-2 second-backImg">
           <img
-            src={require("../../Assets/excited-happy-young.png")}
+            //  src={require("../../Assets/excited-happy-young.png")}
             width="300"
             height="80px"
             alt=""

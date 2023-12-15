@@ -9,7 +9,7 @@
   object-fit: cover;
   height: 500px;
   width: 900px;
-  background-image: url("../../Assets/blob.svg");
+  /* background-image: url("../../Assets/blob.svg"); */
   position: relative;
   background-repeat: no-repeat;
 }
