@@ -2,24 +2,28 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: 30%;
+  /* margin-left: 30%; */
 }
 
-.Back-Image{
+.Header_Color{
+  background-image: linear-gradient(to right bottom, #9bafd9, #7990c4, #5971af, #395399, #103783);
+}
+
+/* .Back-Image{
   object-fit: cover;
   height: 500px;
   width: 900px;
-  /* background-image: url("../../Assets/blob.svg"); */
+  background-image: url("../../Assets/blob.svg");
   position: relative;
   background-repeat: no-repeat;
-}
+} */
 
-.second-backImg{
-  /* background-image: url("../../Assets/excited-happy-young.png"); */
-  /* position: relative;
-  background-repeat:no-repeat; */
+/* .second-backImg{
+  background-image: url("../../Assets/excited-happy-young.png");
+  position: relative;
+  background-repeat:no-repeat;
   filter: drop-shadow(5px 5px 10px #555);
-}
+} */
 
 
 .headerSearchText {
@@ -29,7 +33,7 @@
 }
 
 .options {
-    z-index: 0;
+    z-index: 2;
     position: absolute;
     top: 1px;
     /* bottom: 9px; */

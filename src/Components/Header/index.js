@@ -1,46 +1,13 @@
 import React, { useState } from "react";
-import { DatePicker } from "antd";
 import Popup from "reactjs-popup";
-import 'reactjs-popup/dist/index.css'
+import "reactjs-popup/dist/index.css";
 import "./index.css";
-
+import { DateRange } from "react-date-range";
+import { format, differenceInDays } from "date-fns";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css";
 
 const Header = () => {
-  const style = {
-    border: `1px solid`,
-    borderRadius: "100%",
-  };
-
-  const cellRender = React.useCallback(
-    (current: number | Dayjs, info: CellRenderInfo<Dayjs>) => {
-      if (info.type !== "date") {
-        return info.originNode;
-      }
-      if (typeof current === "number") {
-        return <div className="ant-picker-cell-inner">{current}</div>;
-      }
-      return (
-        <div
-          className="ant-picker-cell-inner"
-          style={current.date() === 1 ? style : {}}
-        >
-          {current.date()}
-        </div>
-      );
-    },
-    []
-  );
-
-  const [destination, setDestination] = useState("");
-  const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -57,169 +24,237 @@ const Header = () => {
     room: 1,
   });
 
+  const [isDateRangePickerVisible, setDateRangePickerVisibility] =
+    useState(false);
+  const [selectionRange, setSelectionRange] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: "selection",
+  });
+
+  const handleSelect = (ranges) => {
+    setSelectionRange(ranges.selection);
+  };
+
+  const toggleDateRangePicker = () => {
+    setDateRangePickerVisibility(!isDateRangePickerVisible);
+  };
+
+  const numberOfDays = differenceInDays(
+    selectionRange.endDate,
+    selectionRange.startDate
+  );
+
   return (
     <>
-      <div className="flex">
-        <div className="Back-Image">
-          <div className="flex ms-16 justify-center mt-10">
-            <div class="w-full max-w-md p-6 mb-5 bg-white border border-gray-200 rounded-lg shadow dark:white dark:white">
-              <form className="mb-5">
-                <label
-                  for="default-search"
-                  class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+      <div className="Header_Color">
+        <div className="flex flex-wrap justify-center">
+          <div class="m-auto w-full max-w-2xl p-6 mb-5 mt-7 bg-white border border-gray-200 rounded-lg shadow dark:white dark:white">
+            <form className="mb-5">
+              <div class="relative">
+                <svg
+                  class="w-6 h-6 text-gray-500 absolute top-3 left-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  // xmlns="http://www.w3.org/2000/svg"
                 >
-                  Search
-                </label>
-                <div class="relative">
-                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg
-                      class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      fill="none"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                      />
-                    </svg>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+                <input
+                  type="search"
+                  placeholder="Search Room, Hotels, Area & landmarks"
+                  class="outline-none border-b-2 w-full border-gray-200 py-3 px-7"
+                />
+              </div>
+            </form>
+
+            {/* Date-Range-Pickers */}
+            <div>
+              <div style={{ position: "relative" }}>
+                <div onClick={toggleDateRangePicker}>
+                  <h1 className="font-xl"></h1>
+                  <div class="flex justify-around font-medium text text-gray-600">
+                    <div>
+                      <p className="font-xl mb-1"> Check-in </p>
+                      <div className="text-2xl text-black">
+                        {format(selectionRange.startDate, "dd MMM yyyy")}
+                      </div>
+                    </div>
+                    <div className="justify-center">
+                      <div className="xl mb-1">Days</div>
+                      <div className="text-2xl text-center text-black">
+                        {numberOfDays}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-xl mb-1">Check-out</p>
+                      <div className="text-2xl text-black">
+                        {format(selectionRange.endDate, "dd MMM yyyy")}
+                      </div>
+                    </div>
                   </div>
-                  <input
-                    type="search"
-                    id="default-search"
-                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search Your Destination..."
-                    required
-                  />
-                  <button
-                    type="submit"
-                    class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                    Search
-                  </button>
                 </div>
-              </form>
 
-              <div className="pt-4, text-center">
-                <DatePicker.RangePicker cellRender={cellRender} size="large" />
+                {isDateRangePickerVisible && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: "100%",
+                      zIndex: 9999,
+                    }}
+                  >
+                    <DateRange
+                      ranges={[selectionRange]}
+                      onChange={handleSelect}
+                      showDateDisplay={false}
+                    />
+                  </div>
+                )}
               </div>
+            </div>
 
+            <div className="mt-4 ms-8">
+              <Popup
+                on={["hover", "focus"]}
+                trigger={
+                  <>
+                    <p className="text-xl mb-1">Guest & Room</p>
+                    <p class="text-2xl font-medium text text-gray-600">{`${options.adult} Adult, ${options.children} Children & ${options.room} Room`}</p>
+                  </>
+                }
+                contentStyle={{
+                  width: "350px",
+                }}
+                position="bottom center"
+              >
+                <div className="flex flex-row justify-center content-center">
+                  {/* Adult Count */}
+                  <div className="block mr-2">
+                    <div className="ms-3 me-5">Adult</div>
+                    <div className="flex flex-row justify-center content-center">
+                      <button
+                        type="button"
+                        disabled={options.adult <= 1}
+                        onClick={() => handleOption("adult", "d")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+                      >
+                        -{" "}
+                      </button>
 
-
-              <div className="mt-4 ms-8">
-                <Popup
-                 
-                  on={["hover", "focus"]}
-                  trigger={
-                    <button>
-                      {" "}
-                      <span className="headerSearchText">{`${options.adult} Adult,  ${options.children} Children &  ${options.room} room`}</span>
-                    </button>
-                  }
-                  contentStyle={{
-                    width: "350px", 
-                   
-                  }}
-                 
-                  position="bottom center"
-                >
-                  <div className="flex flex-row justify-center content-center">
-                    {/* Adult Count */}
-                    <div className="block mr-2">
-                      <div className="ms-3 me-5">Adult</div>
-                      <div className="flex flex-row justify-center content-center">
-                        <button
-                          type="button"
-                          disabled={options.adult <= 1}
-                          onClick={() => handleOption("adult", "d")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-                        >
-                          -{" "}
-                        </button>
-
-                        <span className="optionCounterNumber me-3">
-                          {options.adult}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleOption("adult", "i")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
-                        >
-                          +{" "}
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Children Count */}
-                    <div className="block mr-2">
-                      <div className="ms-3 me-5">Children</div>
-                      <div className="flex flex-row justify-center content-center">
-                        <button
-                          type="button"
-                          disabled={options.children <= 0}
-                          onClick={() => handleOption("children", "d")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-                        >
-                          -{" "}
-                        </button>
-
-                        <span className="optionCounterNumber me-3">
-                          {options.children}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleOption("children", "i")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
-                        >
-                          +{" "}
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Room Count */}
-                    <div className="block">
-                      <div className="ms-3 me-5">Room</div>
-                      <div className="flex flex-row justify-center content-center">
-                        <button
-                          type="button"
-                          disabled={options.room <= 1}
-                          onClick={() => handleOption("room", "d")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-                        >
-                          -{" "}
-                        </button>
-
-                        <span className="optionCounterNumber me-3">
-                          {options.room}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => handleOption("room", "i")}
-                          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
-                        >
-                          +{" "}
-                        </button>
-                      </div>
+                      <span className="optionCounterNumber me-3">
+                        {options.adult}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleOption("adult", "i")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
+                      >
+                        +{" "}
+                      </button>
                     </div>
                   </div>
-                </Popup>
-              </div>
-            
 
+                  {/* Children Count */}
+                  <div className="block mr-2">
+                    <div className="ms-3 me-5">Children</div>
+                    <div className="flex flex-row justify-center content-center">
+                      <button
+                        type="button"
+                        disabled={options.children <= 0}
+                        onClick={() => handleOption("children", "d")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+                      >
+                        -{" "}
+                      </button>
+
+                      <span className="optionCounterNumber me-3">
+                        {options.children}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleOption("children", "i")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
+                      >
+                        +{" "}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Room Count */}
+                  <div className="block">
+                    <div className="ms-3 me-5">Room</div>
+                    <div className="flex flex-row justify-center content-center">
+                      <button
+                        type="button"
+                        disabled={options.room <= 1}
+                        onClick={() => handleOption("room", "d")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
+                      >
+                        -{" "}
+                      </button>
+
+                      <span className="optionCounterNumber me-3">
+                        {options.room}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleOption("room", "i")}
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 "
+                      >
+                        +{" "}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Popup>
+            </div>
+
+            <div className="mt-4 flex justify-end">
+              <button
+                type="button"
+                class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-full text-sm px-16 py-5 text-center me-2 mb-2"
+              >
+                Search
+              </button>
             </div>
           </div>
-        </div>
-        <div className="me-2 second-backImg">
-          <img
-            //  src={require("../../Assets/excited-happy-young.png")}
-            width="300"
-            height="80px"
-            alt=""
-          />
-          <hr class="w-48 h-1 mx-auto bg-gray-100 border-0 rounded md:my-0 dark:bg-gray-100"></hr>
+
+          <div className="m-auto mt-7 mb-5">
+            <div className="">
+              <a
+                href="#"
+                class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Noteworthy technology acquisitions 2021
+                </h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">
+                  Here are the biggest enterprise technology acquisitions of
+                  2021 so far, in reverse chronological order.
+                </p>
+              </a>
+            </div>
+
+            <div>
+              <div className="mt-2">
+                <a
+                  href="#"
+                  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                >
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    Noteworthy technology acquisitions 2021
+                  </h5>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
