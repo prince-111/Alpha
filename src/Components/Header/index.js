@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
-import "./index.css";
 import { DateRange } from "react-date-range";
 import { format, differenceInDays } from "date-fns";
+import "reactjs-popup/dist/index.css";
+import "./index.css";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css";
 import { useNavigate } from "react-router-dom";
