@@ -47,9 +47,9 @@ const Header = () => {
   );
 
   const navigate = useNavigate();
-  const handleSearch = ()=>{
-     navigate("/hotels")
-  }
+  const handleSearch = () => {
+    navigate("/hotels");
+  };
 
   return (
     <>
@@ -126,25 +126,27 @@ const Header = () => {
                 )}
               </div>
             </div>
-            
-            <div class="mt-4"> 
-            <hr class="h-px bg-gray-200 border-0 dark:bg-gray-300"/>
+
+            <div class="mt-4">
+              <hr class="h-px bg-gray-200 border-0 dark:bg-gray-300" />
             </div>
 
-            <div className="mt-1 ms-8">
+            <div className="mt-1">
               <Popup
                 on={["hover", "focus"]}
                 trigger={
-                  <>
-                    <p className="text-xl mb-1">Guest & Room</p>
+                  
+                  <button className="button">
+                    <p className="flex justify-start text-xl mb-1">Guest & Room</p>
                     <p class="text-2xl font-medium text text-gray-600">{`${options.adult} Adult, ${options.children} Children & ${options.room} Room`}</p>
-                  </>
+                  </button>
                 }
                 contentStyle={{
                   width: "350px",
                 }}
                 position="bottom center"
               >
+                <span>
                 <div className="flex flex-row justify-center content-center">
                   {/* Adult Count */}
                   <div className="block mr-2">
@@ -155,11 +157,9 @@ const Header = () => {
                         disabled={options.adult <= 1}
                         onClick={() => handleOption("adult", "d")}
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700"
-                      >
-                        -{" "}
-                      </button>
+                      >  -  </button>
 
-                      <span className="optionCounterNumber me-3">
+                      <span className="optionCounterNumber me-3 mt-1">
                         {options.adult}
                       </span>
                       <button
@@ -185,7 +185,7 @@ const Header = () => {
                         -{" "}
                       </button>
 
-                      <span className="optionCounterNumber me-3">
+                      <span className="optionCounterNumber me-3 mt-1">
                         {options.children}
                       </span>
                       <button
@@ -211,7 +211,7 @@ const Header = () => {
                         -{" "}
                       </button>
 
-                      <span className="optionCounterNumber me-3">
+                      <span className="optionCounterNumber me-3 mt-1">
                         {options.room}
                       </span>
                       <button
@@ -224,6 +224,7 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
+                </span>
               </Popup>
             </div>
 
@@ -249,7 +250,7 @@ const Header = () => {
                 </h5>
                 <p class="font-normal text-gray-700 dark:text-gray-400">
                   Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
+                  2023 so far, in reverse chronological order.
                 </p>
               </a>
             </div>
